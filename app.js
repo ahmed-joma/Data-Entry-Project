@@ -7,7 +7,7 @@ const Mydata = require('./models/mydataschema');
 app.get('/', (req, res) => {
     res.sendFile( '/views/home.html', { root: __dirname })
   })
-  app.post('/', (req, res) => {
+  app.post('/Submit', (req, res) => {
     const name = req.body.name;
     const email = req.body.email;
     const mydata = new Mydata({ name, email });
@@ -17,7 +17,6 @@ app.get('/', (req, res) => {
         console.error('Error saving data:', err);
         res.status(500).send('Error saving data');
     }) ;
-    res.send('Data saved successfully');
   })
 
 mongoose.connect('mongodb+srv://ahmedjomma18:jX11C4KDhXHvlR6w@cluster0.1xatthb.mongodb.net/?appName=Cluster0').then(() => {
